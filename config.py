@@ -60,22 +60,24 @@ SATELLITE_NAME = "Mantis-2"
 GroundStation_NAME = "Svalbard, Norway"
 
 # Communication parameters
-UPLINK_BITRATE_KBPS = 50        # kbps
-DOWNLINK_BITRATE_KBPS = 50      # kbps
-TM_LOCK_TIMEOUT = 30            # seconds
-CMD_ACK_TIMEOUT = 5             # seconds (default for most commands)
+UPLINK_BITRATE_KBPS = 50        # 50 kbps
+DOWNLINK_BITRATE_KBPS = 50      # 50 kbps
+TM_LOCK_TIMEOUT_S = 30            # seconds
+CMD_ACK_TIMEOUT_S = 5             # seconds (default for most commands)
 HK_PACKET_RX_TIME = 15          # seconds to receive HK packet
 LINK_TEST_ACK_TIMEOUT = 5       # seconds
 
+HK_LOG_SIZE_BYTES = 150000    # Average size of one HK log entry
+
 # Platform data download params
-PLATFORM_LOG_SIZE_MB = 0.5      # Platform housekeeping log size
+PLATFORM_LOG_SIZE_BYTES = 500000  # 0.5 MB platform housekeeping log size
 PLATFORM_LOG_TX_TIME = 30       # seconds (T+02:30 to T+03:00)
 
 # Payload data download params
-PAYLOAD_DATA_SIZE_MB = 1.2      # Payload data volume
-PAYLOAD_DL_START_TIME = 200     # T+03:20
-PAYLOAD_DL_END_TIME = 413       # T+06:53 (expected)
-PAYLOAD_DL_DURATION = PAYLOAD_DL_END_TIME - PAYLOAD_DL_START_TIME
+PAYLOAD_DATA_SIZE_BYTES = 1200000  # 1.2 MB payload data size
+PAYLOAD_DOWNLOAD_START_TIME = 200     # T+03:20
+PAYLOAD_DOWNLOAD_END_TIME = 413       # T+06:53 (expected)
+PAYLOAD_DOWNLOAD_DURATION = PAYLOAD_DOWNLOAD_END_TIME - PAYLOAD_DOWNLOAD_START_TIME
 
 # Config file upload params
 CONFIG_FILE_SIZE_KB = 10
