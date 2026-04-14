@@ -70,11 +70,11 @@ LINK_TEST_ACK_TIMEOUT = 5       # seconds
 HK_LOG_SIZE_BYTES = 150000    # Average size of one HK log entry
 
 # Platform data download params
-PLATFORM_LOG_SIZE_BYTES = 500000  # 0.5 MB platform housekeeping log size
+PLATFORM_LOG_SIZE_MB = 0.5 # 0.5 MB platform housekeeping log size
 PLATFORM_LOG_TX_TIME = 30       # seconds (T+02:30 to T+03:00)
 
 # Payload data download params
-PAYLOAD_DATA_SIZE_BYTES = 1200000  # 1.2 MB payload data size
+PAYLOAD_DATA_SIZE_MB = 1.2 # 1.2 MB payload data size
 PAYLOAD_DOWNLOAD_START_TIME = 200     # T+03:20
 PAYLOAD_DOWNLOAD_END_TIME = 413       # T+06:53 (expected)
 PAYLOAD_DOWNLOAD_DURATION = PAYLOAD_DOWNLOAD_END_TIME - PAYLOAD_DOWNLOAD_START_TIME
