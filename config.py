@@ -248,9 +248,9 @@ PHYSICS = {
     "battery_discharge_rate_base": 10.0,    # W (baseline when not in sunlight)
     
     # Thermal parameters
-    "obc_idle_temp_rise": 0.1,              # °C/s (passive)
-    "obc_active_temp_rise": 0.3,            # °C/s (during high load)
-    "obc_passive_cooling_rate": 0.05,       # °C/s (natural dissipation)
+    "obc_idle_temp_rise": 0.0005,              # °C/s (passive)
+    "obc_active_temp_rise": 0.005,            # °C/s (during high load)
+    "obc_passive_cooling_rate": 0.0008,       # °C/s (natural dissipation)
     "ambient_temp": 20.0,                   # °C (space proxy)
 }
 
