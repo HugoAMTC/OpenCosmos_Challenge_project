@@ -3,12 +3,18 @@
 Flight Operations Automation CLI
 FLIGHT-OPERATIONS-CONTACT-PLAN Rev 1.0 Procedure Simulator
 
-Usage:
+Usage Example:
     python main.py                          # Run standard pass
     python main.py --anomaly low_battery    # Inject anomaly
     python main.py --speed 10               # Run 10x real-time
     python main.py --save report.json       # Save results to JSON
     python main.py --help                   # Show help
+
+
+Autor: Hugo Carvalho
+
+Open Cosmos Project Interview - Satellite Flight Operator Challenge
+
 """
 
 import argparse
