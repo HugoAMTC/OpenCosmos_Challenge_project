@@ -147,7 +147,7 @@ INITIAL_SATELLITE_STATE = {
     "tx_enabled": False,                        # TX OFF at start
     "rx_enabled": True,
     "config_version": "v1",
-    "rssi": -92.0,                              # dBm
+    "rssi": -75.0,                              # dBm
     "uplink_frame_error_rate": 0.1,             # %
     "downlink_frame_error_rate": 0.05,          # %
     "active_antenna": "primary",

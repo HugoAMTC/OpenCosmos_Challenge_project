@@ -118,10 +118,35 @@ class FlightOperationsProcedure:
     def add_step_result(self, result: StepResult):
         """Record a step result."""
         self.step_results.append(result)
-        
-        # Print expected result and status for each step
-        print(f"STEP {result.step_id}: {result.status} - Expected: {result.expected_result}")
-        print(f"Actual Result: {result.actual_result}")
+        # Prefer to show the scheduled step time (from result.time_offset) as T±HH:MM:SS
+        ts = None
+        if getattr(result, 'time_offset', None) is not None:
+            off = float(result.time_offset)
+            # Format negative (pre-AOS) or positive offsets
+            sign = '+' if off >= 0 else '-'
+            off_abs = abs(off)
+            hh = int(off_abs // 3600)
+            mm = int((off_abs % 3600) // 60)
+            ss = int(off_abs % 60)
+            ts = f"T{sign}{hh:02d}:{mm:02d}:{ss:02d}"
+        else:
+            # Fallback to simulation-relative time if available
+            sim_time = None
+            try:
+                sim_time = float(self.spacecraft.simulation_time)
+            except Exception:
+                sim_time = None
+
+            if sim_time is not None:
+                hh = int(sim_time // 3600)
+                mm = int((sim_time % 3600) // 60)
+                ss = int(sim_time % 60)
+                ts = f"T+{hh:02d}:{mm:02d}:{ss:02d}"
+            else:
+                ts = result.timestamp.strftime('%H:%M:%S') if hasattr(result, 'timestamp') and result.timestamp else datetime.now().strftime('%H:%M:%S')
+
+        print(f"{ts} - STEP {result.step_id}: {result.status} - Expected: {result.expected_result}")
+        print(f"{ts} - Actual: {result.actual_result}")
         if result.status == "FAIL":
             self.ops_log.log_entry(
                 f"STEP {result.step_id}: FAILED - {result.error_msg}",
@@ -819,8 +844,17 @@ class FlightOperationsProcedure:
         
         # Step 5.5: T+07:10 — TM downlink lost
         self._step_5_5()
-        
+
         # Step 5.6: T+07:40 — TM restored, CMD TX ON
+        # Wait ~30 seconds (simulate) to allow COMMS restart to complete
+        wait_s = 30.0
+        dt = 1.0
+        waited = 0.0
+        self.ops_log.log_entry(f"Waiting {wait_s:.0f}s for COMMS restart to complete (simulated)")
+        while waited < wait_s:
+            self.spacecraft.update(dt)
+            waited += dt
+
         self._step_5_6()
         
         # Step 5.7: T+07:45 — Verify config version
@@ -943,7 +977,7 @@ class FlightOperationsProcedure:
         
         self.add_step_result(result)
     
-    def _step_5_6(self):
+    def  _step_5_6(self):
         """Step 5.6: COMMS restart complete, restore TX."""
         result = StepResult(
             step_id="5.6",
