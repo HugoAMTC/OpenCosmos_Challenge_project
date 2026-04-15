@@ -21,7 +21,7 @@ from typing import Any
 
 from config import ANOMALY_PRESETS, INITIAL_SATELLITE_STATE, Phase
 from satellite import MantisSpacecraft
-from procedure import FlightOperationsProcedure, OpsLog
+from flight_contact_plan import FlightOperationsProcedure, OpsLog
 
 
 def parse_arguments():
