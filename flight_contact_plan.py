@@ -7,6 +7,11 @@ Each phase is a method. Every step from the procedure is tracked with:
 - Time offset from AOS
 - Expected vs. actual results
 - Anomaly detection and handling
+
+Autor: Hugo Carvalho
+
+Open Cosmos Project Interview - Satellite Flight Operator Challenge
+
 """
 
 import sys
