@@ -4,6 +4,11 @@ Simulates subsystems: EPS, OBC, COMMS, ADCS, Thermal, Payload
 
 Provides realistic command/response interface with ACK/NACK handling,
 physics simulation (power, thermal), and state management.
+
+Autor: Hugo Carvalho
+
+Open Cosmos Project Interview - Satellite Flight Operator Challenge
+
 """
 
 import time
