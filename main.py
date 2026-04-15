@@ -15,6 +15,7 @@ Autor: Hugo Carvalho
 
 Open Cosmos Project Interview - Satellite Flight Operator Challenge
 
+
 """
 
 import argparse

@@ -1179,7 +1179,9 @@ class FlightOperationsProcedure:
         """Phase 7: Post-contact Actions (within 30 minutes of LOS)"""
         self.current_phase = Phase.PHASE_7
         self.ops_log.log_entry("=== PHASE 7: POST-CONTACT ACTIONS ===")
-        
+        # compute base LOS time for Phase 7 time_offset calculations
+        self._base_los = self.los_time if getattr(self, "los_time", None) is not None else STEP_TIMING.get("6.5", 0)
+
         self._step_7_1()
         self._step_7_2()
         self._step_7_3()
@@ -1189,10 +1191,11 @@ class FlightOperationsProcedure:
     
     def _step_7_1(self):
         """Step 7.1: Complete ops log."""
+        base = getattr(self, '_base_los', (self.los_time if getattr(self, "los_time", None) is not None else STEP_TIMING.get("6.5", 0)))
         result = StepResult(
             step_id="7.1",
             phase=Phase.PHASE_7,
-            time_offset=0,
+            time_offset=int(base + 0),
             status="PASS",
             expected_result="Ops log complete and saved.",
             actual_result=(
@@ -1207,10 +1210,11 @@ class FlightOperationsProcedure:
     
     def _step_7_2(self):
         """Step 7.2: Raise anomaly reports."""
+        base = getattr(self, '_base_los', (self.los_time if getattr(self, "los_time", None) is not None else STEP_TIMING.get("6.5", 0)))
         result = StepResult(
             step_id="7.2",
             phase=Phase.PHASE_7,
-            time_offset=0,
+            time_offset=int(base + 5*60),
             status="PASS",
             expected_result="All anomaly reports raised and filed.",
             actual_result=f"{len(self.ops_log.anomalies)} anomaly reports raised" if self.ops_log.anomalies else "No anomalies",
@@ -1220,10 +1224,11 @@ class FlightOperationsProcedure:
     
     def _step_7_3(self):
         """Step 7.3: Archive all downlinked data."""
+        base = getattr(self, '_base_los', (self.los_time if getattr(self, "los_time", None) is not None else STEP_TIMING.get("6.5", 0)))
         result = StepResult(
             step_id="7.3",
             phase=Phase.PHASE_7,
-            time_offset=0,
+            time_offset=int(base + 10*60),
             status="PASS",
             expected_result="All data archived. Processing team notified.",
             actual_result="Platform + Payload data archived | Processing team notified",
@@ -1233,10 +1238,11 @@ class FlightOperationsProcedure:
     
     def _step_7_4(self):
         """Step 7.4: Update mission database."""
+        base = getattr(self, '_base_los', (self.los_time if getattr(self, "los_time", None) is not None else STEP_TIMING.get("6.5", 0)))
         result = StepResult(
             step_id="7.4",
             phase=Phase.PHASE_7,
-            time_offset=0,
+            time_offset=int(base + 15*60),
             status="PASS",
             expected_result="Mission database updated. Change tracking closed.",
             actual_result=f"Config v2 marked active | Change Request CR-COMMS-047: {'CLOSED' if self.comms_config_changed else 'OPEN'}",
@@ -1246,10 +1252,11 @@ class FlightOperationsProcedure:
     
     def _step_7_5(self):
         """Step 7.5: Complete shift handover document."""
+        base = getattr(self, '_base_los', (self.los_time if getattr(self, "los_time", None) is not None else STEP_TIMING.get("6.5", 0)))
         result = StepResult(
             step_id="7.5",
             phase=Phase.PHASE_7,
-            time_offset=0,
+            time_offset=int(base + 30*60),
             status="PASS",
             expected_result="Handover document signed and delivered.",
             actual_result="Handover document completed and delivered to incoming SFO",
