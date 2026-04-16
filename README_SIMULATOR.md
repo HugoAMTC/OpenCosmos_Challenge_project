@@ -83,9 +83,10 @@ python main.py --telemetry telemetry.json   # Save telemetry snapshots
 
 ### Installation
 1. Clone or download the Flight_Operations folder
-2. Navigate to the directory:
+2. Open your terminal (Command Prompt, PowerShell)
+3. Navigate to the directory where you saved the project:
    ```bash
-   cd "d:\Profissional\Jobs\Open Cosmos\Satellite Flight Operator\Satellite Operations Challenge\Code\Flight_Operations"
+   cd "path/to/Flight_Operations"
    ```
 
 ### Running a Standard Pass
