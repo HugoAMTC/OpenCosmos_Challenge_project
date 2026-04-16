@@ -34,7 +34,7 @@ from flight_contact_plan import FlightOperationsProcedure, OpsLog
 def parse_arguments():
     """Parse command-line arguments."""
     parser = argparse.ArgumentParser(
-        description="Flight Operations Procedure Simulator - OC-MOP-FO-001 Rev 2",
+        description="Flight Operations Procedure Simulator - OC-FL-OP-PL Rev 1.0",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
@@ -292,7 +292,7 @@ def save_report(procedure: FlightOperationsProcedure, telemetry: list, filename:
     full_report = {
         "metadata": {
             "simulation_date": datetime.now().isoformat(),
-            "procedure": "OC-MOP-FO-001 Rev 2",
+            "procedure": "OC-FL-OP-PL Rev 1",
             "simulator_version": "1.0",
         },
         "pass_summary": report["pass_summary"],
