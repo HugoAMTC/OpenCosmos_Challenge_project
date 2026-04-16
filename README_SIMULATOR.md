@@ -1,5 +1,6 @@
 # Flight Operations Procedure Simulator
-## OC-FL-OP-PL Rev 1 — Mantis Satellite Contact Automation
+## OC-FL-OP-PL - Rev 1 — Mantis Satellite Contact Automation
+### Autor: Hugo Carvalho
 
 A Python-based simulator for the automated execution of satellite flight operations contact procedures. This project implements the complete 7-phase contact sequence for the Open Cosmos Mantis satellite, including realistic spacecraft physics, command/response handling, and comprehensive anomaly injection capabilities.
 
