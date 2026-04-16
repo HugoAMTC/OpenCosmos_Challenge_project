@@ -5,7 +5,7 @@ A Python-based simulator for the automated execution of satellite flight operati
 
 ---
 
-This simulator automates the procedures defined in the document **Open Cosmos - Flight Operational Contact Plan & Procedure - Rev 1.0 - Internal Restricted**. It simulates a complete satellite contact from pre-contact preparation through post-contact actions, including:
+This simulator automates the procedures defined in the document **Open Cosmos - Flight Operational Contact Plan & Procedure - Rev 1.0 - Internal Restricted** created by Hugo Carvalho. It simulates a complete satellite contact from pre-contact preparation through post-contact actions, including:
 
 - **Phase 0**: Pre-contact Preparation (T-30:00 to T-00:01)
 - **Phase 1**: Contact Acquisition (T+00:00 to T+01:15)
