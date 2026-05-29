@@ -251,7 +251,7 @@ Expected: Phase 1 fails immediately (CRITICAL). Procedure halts. Contact aborted
 
 ## Version History
 
-- **v1.0** (2025-04-16): Initial release
+- **v1.0** (2026-04-16): Initial release
   - Complete 7-phase procedure implementation
   - Mantis spacecraft model with physics
   - 8 anomaly presets
